@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Harvyn - TikTok sign-in</title>
+<style>body{font:16px system-ui;margin:3rem auto;max-width:36rem;padding:0 1rem}code{font-size:1.1rem;word-break:break-all;background:#eee;padding:.4rem;display:block;margin:1rem 0}</style>
+<h1>Harvyn has the TikTok code</h1>
+<p id="m">Reading…</p>
+<script>
+const q=new URLSearchParams(location.search);const c=q.get('code');const e=q.get('error');
+const m=document.getElementById('m');
+if(e){m.textContent='TikTok said: '+e+' - '+(q.get('error_description')||'');}
+else if(c){m.innerHTML='Copy this code, then run <b>python tools/tiktok_token.py</b> on the laptop within 10 minutes.<code id="c"></code><button onclick="navigator.clipboard.writeText(document.getElementById(\'c\').textContent).then(()=>this.textContent=\'copied\')">copy</button>';document.getElementById('c').textContent=c;}
+else{m.textContent='No code in the URL. Start the sign-in from the laptop again.';}
+</script>
